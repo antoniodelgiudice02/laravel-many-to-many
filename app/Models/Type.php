@@ -11,4 +11,8 @@ class Type extends Model
     public function projects(){
         return $this->hasMany(Project::class);
     }
+
+    public function getLabel(){
+        return "<span class='p-1' style='background-color: {$this->color}'> {$this->label} </span>";
+    }
 }

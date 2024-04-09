@@ -29,7 +29,7 @@
                 <tr>
                     <td>{{ $project->id }}</td>
                     <td>{{ $project->title }}</td>
-                    <td>{{ $project->type->label }}</td>
+                    <td>{!! $project->type->getLabel() !!}</td>
                     <td>{{ $project->getContent(50) }}</td>
                     <td>{{ $project->slug }}</td>
 
