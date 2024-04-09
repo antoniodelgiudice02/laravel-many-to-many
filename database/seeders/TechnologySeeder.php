@@ -21,9 +21,9 @@ class TechnologySeeder extends Seeder
         foreach($technology_data as $_tech){
             $technology = new Technology;
             $technology->label = $_tech;
-            $technology->color = $faker->hexColor(7);
+            $technology->color = $faker->hexColor();
             $technology->save();
 
-        }
+        };
     }
 }

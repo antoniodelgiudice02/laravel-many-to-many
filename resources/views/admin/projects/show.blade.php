@@ -16,6 +16,7 @@
                 <th>ID</th>
                 <th>Tipologia</th>
                 <th>Contenuto</th>
+                <th>Tecnologie</th>
                 <th>Slug</th>
                 <th></th>
                 <th></th>
@@ -29,6 +30,17 @@
                     <td>{{ $project->type->label }}</td>
 
                     <td>{{ $project->content }}</td>
+
+                    <td>
+                        <ul>
+
+                            @foreach($project->technologies as $technology)
+                                <li>{{ $technology->label }}</li>
+                            @endforeach
+
+                        </ul>
+                        
+                    </td>
 
                     <td>{{ $project->slug }}</td>
 
