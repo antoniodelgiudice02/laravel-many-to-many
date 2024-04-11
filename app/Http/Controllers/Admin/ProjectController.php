@@ -45,6 +45,16 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
+        //VALIDAZIONE
+
+        $request->validate([
+            'title' => 'required|max:150',
+            'content' => 'required',
+            'type_id' => 'required',
+            'technologies' => 'required|min:1',
+        ]);
+
         $data = $request->all();
         $project = new Project;
         // dd($data['technologies']);
