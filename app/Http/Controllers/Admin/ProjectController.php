@@ -49,10 +49,14 @@ class ProjectController extends Controller
         //VALIDAZIONE
 
         $request->validate([
-            'title' => 'required|max:150',
-            'content' => 'required',
+            'title' => 'bail|required|max:150',
             'type_id' => 'required',
-            'technologies' => 'required|min:1',
+            'technologies' => 'bail|required',
+        ],[
+            'title.required' => 'Inserire il titolo del progetto',
+            'title.max' => 'Il titiolo non può essere più lungo di 150 caratteri',
+            'type_id' => 'Selezionare la tipologia del progetto',
+            'technologies.required' => 'Selezionare almeno una tecnologia'
         ]);
 
         $data = $request->all();
