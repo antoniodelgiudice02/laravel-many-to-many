@@ -48,9 +48,11 @@
                 <select class="form-select  @error('type_id') is-invalid  @enderror" value=' {{old('type_id')}}' id='type_id' name='type_id' aria-label="Default select example">
                     
                     <option selected class='d-none'>Tipologia</option>
+
                     @foreach( $types as $type )
-                        <option  value='{{ $type->id }}'>{{ $type->label }}</option>
+                        <option  value='{{ $type->id }}' @if( old('type_id') == $type->id ) selected @endif>{{ $type->label }}</option>
                     @endforeach
+
                 </select>
 
                 @error('type_id')
@@ -65,8 +67,8 @@
         @foreach( $technologies as $technology)
 
             <div class="form-check">
-                <input class="form-check-input @error('technologies') is-invalid  @enderror" type="checkbox" value="{{ $technology->id }}" id="technology-{{ $technology->id }}" name='technologies[]'>
-                <label class="form-check-label" for="technology-{{ $technology->id }}">
+                <input @if( old('technologies') == 'on' ) checked @endif class="form-check-input @error('technologies') is-invalid  @enderror" type="checkbox" value="{{ $technology->id }}" id="technology-{{ $technology->id }}" name='technologies[]'>
+                <label class="form-check-label"  for="technology-{{ $technology->id }}">
                     {{$technology->label}}
                 </label>
             </div>
@@ -83,7 +85,7 @@
 
             <label for="content" class="form-label">Content</label>
             <div class="input-group ">
-                <textarea type="text" class="form-control @error('content') is-invalid  @enderror" id="content" aria-describedby="basic-addon3 basic-addon4" name='content'></textarea>
+                <textarea type="text" class="form-control @error('content') is-invalid  @enderror" id="content" aria-describedby="basic-addon3 basic-addon4" name='content'>{{old('content')}}</textarea>
             </div>
 
         </div>

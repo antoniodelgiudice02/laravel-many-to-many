@@ -9,6 +9,7 @@ use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -50,7 +51,7 @@ class ProjectController extends Controller
 
         $request->validate([
             'title' => 'bail|required|max:150',
-            'type_id' => 'required',
+            'type_id' => ['required', Rule::in([1, 2, 3])],
             'technologies' => 'bail|required',
         ],[
             'title.required' => 'Inserire il titolo del progetto',
